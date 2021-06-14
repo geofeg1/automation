@@ -1,0 +1,4 @@
+{
+  "using": "xpath",
+  "value": "//*[@id=\"narrow-by-list\"]/dd[12]/ol/li[1]/a/span[1]"
+}
