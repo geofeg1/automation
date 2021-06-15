@@ -73,11 +73,13 @@ describe('My madison island application', () => {
                                                                     //then loop over the displayed items after filter and check that their price is between 100 and 200
         //a.slice;
        
-      
-        const  output = element.getText();
+      const output = browser.call(                  //required to deal with Promises from 3rd-party libraries, I should use browser.call, but didn't work as well
+            () => element.getText()
+        )
+      //  const  output = element.getText();                            //same results
         console.log(`price with dlr${output}`);
         const finalprice=  FilterPrice.extractPrice(output).then(str => console.log(str));       //showed in the console  as Promise { <pending> }
-        console.log(`price after removing dlr ${finalprice}`);                                  //however at the end it displayed the 4 prices with the $ 
+        console.log(`price after removing dlr ${finalprice}`);                                  //however at the end of the console it displayed the 4 prices with the $ 
         });
         const Filter=$('//*[@id="narrow-by-list"]/dd[12]/ol/li[1]/a/span[1]');//execute the filter             
         await (await Filter).click();
